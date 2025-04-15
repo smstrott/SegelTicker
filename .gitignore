@@ -1,0 +1,7 @@
+# Ignoriere die Konfigurationsdatei
+config.json
+config_productive.json
+
+# Ignoriere alle PNG-Dateien (egal wo im Projekt)
+*.png
+**/*.png
