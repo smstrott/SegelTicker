@@ -213,10 +213,6 @@ def plot_wind_speed(hourly_wind, hourly_gust, hourly_temp, pop, hourly_rain, hou
     tomorrow_end=int(hour_sunset)-6+24
     date_titel = [convert_timestamp_to_berlin(ts).strftime('%a, %d.%m.') for ts in hourly_timestamps]
 
-    # ------------------------
-    # Hourly Wind/Temp/PoP Plot
-    # ------------------------
-
     plot("today", Location, hourly_indices, hourly_labels, hourly_speeds, hourly_gust_speeds, today_end, tomorrow_start, tomorrow_end, date_titel, hourly_temp, hourly_rain, pop)
     plot("tomorrow", Location, hourly_indices, hourly_labels, hourly_speeds, hourly_gust_speeds, today_end, tomorrow_start, tomorrow_end, date_titel, hourly_temp, hourly_rain, pop)
 
