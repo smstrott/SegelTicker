@@ -13,7 +13,6 @@ locale.setlocale(locale.LC_TIME, "de_DE.UTF-8")
 with open("config.json", "r") as f:
     config = json.load(f)
 
-# Zugangsdaten
 bot_token = config["telegram"]["token"]
 chat_id = config["telegram"]["chat_id"]
 app_id = config["openweathermap"]["app_id"]
