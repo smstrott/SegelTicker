@@ -8,9 +8,14 @@ import json
 import requests
 import re
 import locale
+import os
 locale.setlocale(locale.LC_TIME, "de_DE.UTF-8")
 
-with open("config.json", "r") as f:
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+config_path = os.path.join(BASE_DIR, "config.json")
+
+with open(config_path, "r") as f:
     config = json.load(f)
 
 bot_token = config["telegram"]["token"]
