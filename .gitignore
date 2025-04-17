@@ -1,6 +1,7 @@
 # Ignoriere die Konfigurationsdatei
 config.json
 config_productive.json
+wind_data.json
 
 # Ignoriere alle PNG-Dateien (egal wo im Projekt)
 *.png

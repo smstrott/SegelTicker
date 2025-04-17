@@ -28,7 +28,8 @@ def send_telegram_message(token, chat_id, message, thread_id):
         "chat_id": chat_id,
         "text": message,
         "parse_mode": "MarkdownV2",
-        "message_thread_id": thread_id
+        "message_thread_id": thread_id,
+        "disable_notification": True
     }
     response = requests.post(url, data=payload)
     if response.status_code == 200:
@@ -40,7 +41,7 @@ def send_telegram_photo(thread_id, Dateiname, Tag):
     url = f"https://api.telegram.org/bot{bot_token}/sendPhoto"
     with open(Dateiname, "rb") as foto:
         files = {"photo": foto}
-        data = {"chat_id": chat_id, "message_thread_id": thread_id, "caption": f"📊 Wetter {Tag}"}
+        data = {"chat_id": chat_id, "message_thread_id": thread_id, "caption": f"📊 Wetter {Tag}", "disable_notification": True}
         response = requests.post(url, files=files, data=data)
     if response.status_code == 200:
         print("Nachricht gesendet ✅")
