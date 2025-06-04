@@ -12,12 +12,12 @@ import locale
 locale.setlocale(locale.LC_TIME, "de_DE.UTF-8")
 
 
-bot_token = "7575140761:AAG6hToLqtRPZb_Xw_NFSaEnFvezZxEUt2w"
+bot_token = ""
 test=True
 if test == False:
-    chat_id = "-1002446565607"  # Beachte das Minus bei Gruppen
+    chat_id = "-"  # Beachte das Minus bei Gruppen
 else:
-    chat_id = "-1002338514550"  # Beachte das Minus bei Gruppen
+    chat_id = "-"  # Beachte das Minus bei Gruppen
 
 
 def send_telegram_message(token, chat_id, message):
