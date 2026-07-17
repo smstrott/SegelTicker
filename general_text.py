@@ -1,37 +1,21 @@
-import json
-import matplotlib.pyplot as plt
-import numpy as np
-from datetime import datetime, timezone
-import pytz
-import requests
-import json
-import requests
 import re
-from datetime import date, timedelta
 import locale
-locale.setlocale(locale.LC_TIME, "de_DE.UTF-8")
+import os
+from telegram_client import send_telegram_message
+from config_loader import load_config
+try:
+    locale.setlocale(locale.LC_TIME, "de_DE.UTF-8")
+except locale.Error:
+    locale.setlocale(locale.LC_TIME, "")
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CONFIG_PATH = os.path.join(BASE_DIR, "config.json")
 
-bot_token = ""
-test=True
-if test == False:
-    chat_id = "-"  # Beachte das Minus bei Gruppen
-else:
-    chat_id = "-"  # Beachte das Minus bei Gruppen
+config = load_config(CONFIG_PATH)
 
+bot_token = config["telegram"]["token"]
+chat_id = config["telegram"]["chat_id"]
 
-def send_telegram_message(token, chat_id, message):
-    url = f"https://api.telegram.org/bot{token}/sendMessage"
-    payload = {
-        "chat_id": chat_id,
-        "text": message,
-        "parse_mode": "MarkdownV2",
-    }
-    response = requests.post(url, data=payload)
-    if response.status_code == 200:
-        print("Nachricht gesendet ✅")
-    else:
-        print("Fehler beim Senden ❌", response.text)
 
 def escape_markdown(text):
     return re.sub(r'([_\[\]()~`>#+\-=|{}.!])', r'\\\1', text)
@@ -61,19 +45,19 @@ def main():
 )
     
     update_msg = (
-    "🔄 *Update SegelTicker Berlin ab dem 12.04.2025* (v2 → v3)\n\n"
-    "*Bugfixes:*\n"
-    "• Fehler bei der Warnung vor Böen wurde gefixt.\n\n"
-    "*Neue Features:*\n"
-    "• Regenrisiko und Regenmenge werden nur visualisiert, wenn diese ungleich 0 sind.\n"
-    "• Regenmenge wird als Faktor zur Einschätzung des Segeltags berücksichtigt.\n"
-    "• Kompaktere Wetter-Zusammenfassung im Ausblick\n"
-    "• Einschätzung,ob Gennacker oder Trapez gesegelt werden kann.\n"
-    "• Böen werden als hellblaue, gestrichelte Linie mit visualisiert.\n"
-    "• Achsenlimits fest statt variabel.\n"
-    "💬 *Fragen, Feedback oder Wünsche?* Schreib an @nafets92"
+    "⛵ *SegelTicker Berlin verabschiedet sich in die Winterpause* ☃️\n\n"
+    "Die Boote kehren langsam ins Winterlager zurück – und auch der *SegelTicker* legt eine Pause ein.\n"
+    "Ab Frühjahr sind wir wieder am Start – mit frischem Wind, neuen Features und aktuellen Segelbedingungen für Berlin!\n\n"
+    "Danke an alle, die den Ticker diese Saison genutzt haben.\n"
+    "Bleibt dran – wir melden uns rechtzeitig zum Saisonstart zurück!\n\n"
+    "📬 Feedback & Ideen? Gerne an @nafets92"
 )
-    send_telegram_message(bot_token, chat_id, escape_markdown(update_msg))
+    send_telegram_message(
+        bot_token,
+        chat_id,
+        escape_markdown(update_msg),
+        disable_notification=False,
+    )
 
 if __name__ == "__main__":
     main()

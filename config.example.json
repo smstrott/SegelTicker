@@ -1,0 +1,17 @@
+{
+  "telegram": {
+    "token": "TELEGRAM_BOT_TOKEN",
+    "chat_id": "TELEGRAM_CHAT_ID"
+  },
+  "openweathermap": {
+    "app_id": "OPENWEATHER_API_KEY"
+  },
+  "locations": [
+    {
+      "name": "Wannsee",
+      "channel_id": "TELEGRAM_TOPIC_ID",
+      "lat": "52.4361236",
+      "lon": "13.1697951"
+    }
+  ]
+}
