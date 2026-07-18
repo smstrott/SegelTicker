@@ -21,37 +21,30 @@ def escape_markdown(text):
     return re.sub(r'([_\[\]()~`>#+\-=|{}.!])', r'\\\1', text)
 
 def main():
-    message = (
-    "🌤️ *SegelTicker Berlin (v3)*\n"
-    "Tägliches Wetter-Update für Segler:innen ⛵️\n\n"
-    "🔍 *Analyse der nächsten 2 Tage:*\n"
-    "• Gemessene & gefühlte Temperatur\n"
-    "• Wind (min/max) & Böen\n"
-    "• Regenwahrscheinlichkeit (PoP %)\n"
-    "• Regenmenge (mm/h)\n"
-    "• Sonnenuntergangszeit\n\n"
-    "📊 *Stündliche Visualisierung:*\n"
-    "• Zeitraum: 08:00 bis 2h nach Sonnenuntergang\n"
-    "• Temperatur, Wind, Regenwahrsch.\n"
-    "• Niederschlagsmenge\n\n"
-    "✅ *Segeltauglich?* Bewertung nach:\n"
-    "• Temperatur > 15 °C\n"
-    "• Wind zw. 2–7 Bft\n"
-    "• Böen < 6 Bft über Wind\n"
-    "• Regenwahrsch. < 60 %\n"
-    "• Stündliche Regenmenge. < 0.7 mm/h\n"
-    "• Tägliche Regenmenge. < 1.7 mm\n\n"
-    "💬 *Fragen, Feedback oder Wünsche?* Schreib an @nafets92"
-)
-    
     update_msg = (
-    "⛵ *SegelTicker Berlin verabschiedet sich in die Winterpause* ☃️\n\n"
-    "Die Boote kehren langsam ins Winterlager zurück – und auch der *SegelTicker* legt eine Pause ein.\n"
-    "Ab Frühjahr sind wir wieder am Start – mit frischem Wind, neuen Features und aktuellen Segelbedingungen für Berlin!\n\n"
-    "Danke an alle, die den Ticker diese Saison genutzt haben.\n"
-    "Bleibt dran – wir melden uns rechtzeitig zum Saisonstart zurück!\n\n"
-    "📬 Feedback & Ideen? Gerne an @nafets92"
-)
+        "🚀 *SegelTicker Berlin – großes Update* ⛵\n\n"
+        "Aus dem Wetterbericht wird ein echter Segelassistent: Ab sofort zeigt der SegelTicker nicht nur die Prognose, sondern wann sich das Segeln wirklich lohnt.\n\n"
+        "🕐 *Neue Segelfenster*\n"
+        "• Analyse aller Zeiträume ab 3 Stunden\n"
+        "• Empfehlung des besten stabilen Segelfensters\n"
+        "• Weitere geeignete Zeiträume werden ebenfalls markiert\n"
+        "• Verständliche Bewertung von ausgezeichnet bis ungeeignet\n\n"
+        "📊 *Komplett neues Dashboard*\n"
+        "• Wind und Böen in einer klaren, geglätteten Darstellung\n"
+        "• Windrichtung direkt im Winddiagramm\n"
+        "• Geeignete Zeiträume auf einen Blick\n"
+        "• Sonnenuntergang, Temperatur und Regen übersichtlicher dargestellt\n"
+        "• Kompakte Trockenanzeige, wenn kein Regen erwartet wird\n\n"
+        "💬 *Kompaktere Nachrichten*\n"
+        "• Bestes Zeitfenster, Wind, Böen und Windrichtung\n"
+        "• Temperatur, Regenstatus und Sonnenuntergang\n"
+        "• Tages-Tendenz für die weiteren Aussichten\n\n"
+        "🛡 *Zuverlässiger im Betrieb*\n"
+        "Fehler an einem Standort beeinflussen die übrigen Reviere nicht mehr. Wetterabruf und Versand wurden zusätzlich abgesichert.\n\n"
+        "Die Bewertung ist zunächst auf typische Freizeitsegler ausgerichtet und wird mit euren Erfahrungen weiter verbessert.\n\n"
+        "📬 *Wie gefallen euch die neuen Empfehlungen und Grafiken?*\n"
+        "Feedback und Wünsche gerne an @nafets92"
+    )
     send_telegram_message(
         bot_token,
         chat_id,
